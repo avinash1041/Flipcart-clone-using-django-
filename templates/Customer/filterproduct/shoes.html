@@ -1,0 +1,86 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Top wear product{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <div class="list-group">
+     <a href="{% url 'shoes' %}" class="list-group-item list-group-item-action-sm-3" area-current="true"><strong>All Top Wear Product</strong></a>
+     <a href="{% url 'shoesdata' 'Nike' %}" class="list-group-item list-group-item-action" area-current="true">Nike </a>
+     <a href="{% url 'shoesdata' 'adidas' %}" class="list-group-item list-group-item-action" area-current="true">adidas</a>
+     <a href="{% url 'shoesdata' 'Balance' %}" class="list-group-item list-group-item-action" area-current="true">Balance</a>
+     <a href="{% url 'shoesdata' 'ASICS' %}" class="list-group-item list-group-item-action" area-current="true">ASICS</a>
+     <a href="{% url 'shoesdata' 'PUMA' %}" class="list-group-item list-group-item-action" area-current="true">PUMA</a>
+     <a href="{% url 'shoesdata' 'Skechers' %}" class="list-group-item list-group-item-action" area-current="true">Skechers</a>
+     <a href="{% url 'shoesdata' 'Fila' %}" class="list-group-item list-group-item-action" area-current="true">Fila</a>
+     <a href="{% url 'shoesdata' 'Bata' %}" class="list-group-item list-group-item-action" area-current="true">Bata</a>
+     <a href="{% url 'shoesdata' 'Burberry' %}" class="list-group-item list-group-item-action" area-current="true">Burberry</a>
+     <a href="{% url 'shoesdata' 'Corporation' %}" class="list-group-item list-group-item-action" area-current="true">Corporation</a>
+  </div>
+   <hr>
+    <div class="row">
+  <div class="col-sm-12">
+       <div class="list-group">
+     <a  class="list-group-item list-group-item-action-sm-3" area-current="true"><strong>Choose Price</strong></a>
+      <a href="{% url 'shoesdata' 'below' %}" class="list-group-item list-group-item-action" area-current="true">Below 1500rs</a>
+       <a href="{% url 'shoesdata' 'above' %}" class="list-group-item list-group-item-action" area-current="true">Above 1500rs</a>
+      <a href="{% url 'shoesdata' 'min' %}" class="list-group-item list-group-item-action" area-current="true">Minimum price</a>
+      <a href="{% url 'shoesdata' 'max' %}" class="list-group-item list-group-item-action" area-current="true">Maximum price</a>
+        </div>
+   </div>
+     </div>
+  </div>
+  <div class="col-sm-8">
+   <div class="row">
+   {% for product in Shoesdata %}
+    <div class="col-sm-4 text-center mb-4">
+     <a href="{% url 'productdetail' product.id %}" class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" height=250" width="200" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer">
+     <button class="btn btn-sm btn-primary" style="margin-left: 6px;"><i class="fa fa-shopping-cart"></i> </button>
+     <button class="btn btn-sm btn-danger"><i class="fa fa-heart"></i> </button>&nbsp&nbsp&nbsp&nbsp&nbsp
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <span class="float-right">
+      4.3/5
+      <i class="fa fa-star text-warning"></i>
+     </span></a></div></div>
+    </div>
+   {% endfor %}
+
+   </div>
+    </div>
+ </div>
+</div>
+</div>
+
+
+{% if topwear.has_other_pages %}
+  <ul class="pagination" style="margin-left: 570px;">
+    {% if topwear.has_previous %}
+      <li><a href="?page={{ topwear.previous_page_number }}">Previous</a></li>&nbsp
+    {% else %}
+      <li class="disabled"><span></span></li>
+    {% endif %}
+    {% for i in topwear.paginator.page_range %}
+      {% if topwear.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>&nbsp
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>&nbsp
+      {% endif %}
+    {% endfor %}
+    {% if topwear.has_next %}
+      <li><a href="?page={{ topwear.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="disabled"><span></span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
+{% endblock main-content %}

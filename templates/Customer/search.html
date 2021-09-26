@@ -1,0 +1,99 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+
+{% block main-content %}
+<div class="container my-4">
+    <h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search result for</span> {{request.GET.q}}</h3>
+
+{% if data < 0 %}
+    <h1>please insert data</h1>
+{% endif %}
+{% if data %}
+     <div class="col-12">
+   <div class="row">
+   {% for product in data %}
+    <div class="col-sm-3 text-center mb-4">
+     <a href="{% url 'productdetail' product.id %}" class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" width="200" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer">
+     <button class="btn btn-sm btn-primary" style="margin-left: 6px;"><i class="fa fa-shopping-cart"></i> </button>
+     <button class="btn btn-sm btn-danger"><i class="fa fa-heart"></i> </button>&nbsp&nbsp&nbsp&nbsp&nbsp
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <span class="float-right">
+      4.3/5
+      <i class="fa fa-star text-warning"></i>
+     </span></a></div></div>
+    </div>
+
+  {% endfor %}
+
+    {% if data.has_other_pages %}
+<nav class="my-3 container ">
+  <ul class="pagination">
+      {% if data.has_previous %}
+      <li class="page-item"> <a class="page-link" href="?page={{ data.previous_page_number }}">Previous</a> </li>
+      {% else %}
+      <li class="disabled"><span></span></li>
+    {% endif %}
+      {% for i in data.paginator.page_range %}
+      {% if data.number == i %}
+      <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if data.has_next %}
+      <li class="page-item"> <a class="page-link" href="?page={{ data.next_page_number }}">Next</a> </li>
+      {% else %}
+      <li class="disabled"><span></span></li>
+    {% endif %}
+
+  </ul>
+</nav>
+  {% endif %}
+
+    {% else %}
+    <center><h1 class="text-danger">No Data Found</h1></center>
+    {% endif %}
+
+   </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+ <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+
+
+{% endblock main-content %}
+
+</body>

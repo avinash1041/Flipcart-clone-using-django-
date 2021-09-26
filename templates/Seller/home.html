@@ -1,0 +1,150 @@
+{% extends 'Seller/base.html' %}
+{% load static %}
+{% block title %}Home page{% endblock title %}
+
+{% block banner_slider %}
+<body>
+ <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'Seller/banner/44.jpg' %}" height="560" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Seller/banner/666.jpg' %}" height="570" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Seller/banner/33.jpg' %}" height="570" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Seller/banner/44.jpg' %}" height="570" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Seller/banner/55.jpg' %}" height="570" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Seller/banner/66.jpg' %}" height="570" class="d-block w-100" alt="...">
+    </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+
+{% endblock banner_slider %}
+
+
+{% block main-content %}
+
+
+   <div class="col-lg-12">
+   <div class="row">
+   {% for product in topwear %}
+    <div class="col-sm-3 text-center">
+     <a class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer-right">
+        <a href="{% url 'updateproduct' product.id %}"><button class="btn btn-sm btn-primary" style="margin-left: -30px;">Update </button></a>&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <span class="float-right">
+      <a href="{% url 'dltbasics' product.id %}"><button class="raw-btn btn-sm btn-danger">Delete</button><br></a><br>
+     </span></a></div></div>
+    </div>
+   {% endfor %}
+
+   </div>
+    </div>
+<hr>
+
+   <div class="col-lg-12">
+       <h2>Bottom wear</h2>
+   <div class="row">
+   {% for product in bottomwear %}
+    <div class="col-sm-3 text-center">
+     <a class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer-right">
+        <a href="{% url 'updateproduct' product.id %}"><button class="btn btn-sm btn-primary" style="margin-left: -30px;">Update </button></a>&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <span class="float-right">
+      <a href="{% url 'dltbasics' product.id %}"><button class="raw-btn btn-sm btn-danger">Delete</button><br></a><br>
+     </span></a></div></div>
+    </div>
+   {% endfor %}
+
+   </div>
+    </div>
+<hr>
+
+
+    <div class="col-lg-12">
+       <h2>All Mobile</h2>
+   <div class="row">
+   {% for product in Mobile %}
+    <div class="col-sm-3 text-center">
+     <a class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer-right">
+        <a href="{% url 'updateproduct' product.id %}"><button class="btn btn-sm btn-primary" style="margin-left: -30px;">Update </button></a>&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <span class="float-right">
+      <a href="{% url 'dltbasics' product.id %}"><button class="raw-btn btn-sm btn-danger">Delete</button><br></a><br>
+     </span></a></div></div>
+    </div>
+   {% endfor %}
+
+   </div>
+    </div>
+<hr>
+
+     <div class="col-lg-12">
+       <h2>All Mobile</h2>
+   <div class="row">
+   {% for product in Shoesdata %}
+    <div class="col-sm-3 text-center">
+     <a class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" width="250" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer-right">
+        <a href="{% url 'updateproduct' product.id %}"><button class="btn btn-sm btn-primary" style="margin-left: -30px;">Update </button></a>&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <span class="float-right">
+      <a href="{% url 'dltbasics' product.id %}"><button class="raw-btn btn-sm btn-danger">Delete</button><br></a><br>
+     </span></a></div></div>
+    </div>
+   {% endfor %}
+
+
+
+
+ </div>
+{% endblock main-content %}
+
+</body>

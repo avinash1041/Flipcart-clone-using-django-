@@ -1,0 +1,59 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Top wear product{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <div class="list-group">
+     <a href="{% url 'mobile' %}" class="list-group-item list-group-item-action-sm-3" area-current="true"><strong>All Top Wear Product</strong></a>
+     <a href="{% url 'mobiledata' 'Redmi' %}" class="list-group-item list-group-item-action" area-current="true">Redmi </a>
+     <a href="{% url 'mobiledata' 'Samsung' %}" class="list-group-item list-group-item-action" area-current="true">Samsung</a>
+     <a href="{% url 'mobiledata' 'Huawei' %}" class="list-group-item list-group-item-action" area-current="true">Huawei</a>
+     <a href="{% url 'mobiledata' 'Apple' %}" class="list-group-item list-group-item-action" area-current="true">Apple</a>
+     <a href="{% url 'mobiledata' 'Xiaomi' %}" class="list-group-item list-group-item-action" area-current="true">Xiaomi</a>
+     <a href="{% url 'mobiledata' 'Oppo' %}" class="list-group-item list-group-item-action" area-current="true">Oppo</a>
+     <a href="{% url 'mobiledata' 'Vivo' %}" class="list-group-item list-group-item-action" area-current="true">Vivo</a>
+     <a href="{% url 'mobiledata' 'Nokia' %}" class="list-group-item list-group-item-action" area-current="true">Nokia</a>
+     <a href="{% url 'mobiledata' 'Sony' %}" class="list-group-item list-group-item-action" area-current="true">Sony</a>
+     <a href="{% url 'mobiledata' 'LG' %}" class="list-group-item list-group-item-action" area-current="true">LG</a>
+  </div>
+   <hr>
+    <div class="row">
+  <div class="col-sm-12">
+       <div class="list-group">
+     <a  class="list-group-item list-group-item-action-sm-3" area-current="true"><strong>Choose Price</strong></a>
+      <a href="{% url 'mobiledata' 'below' %}" class="list-group-item list-group-item-action" area-current="true">Below 1500rs</a>
+       <a href="{% url 'mobiledata' 'above' %}" class="list-group-item list-group-item-action" area-current="true">Above 1500rs</a>
+        </div>
+   </div>
+     </div>
+  </div>
+  <div class="col-sm-8">
+   <div class="row">
+   {% for product in mobiles %}
+    <div class="col-sm-4 text-center mb-4">
+     <a href="{% url 'productdetail' product.id %}" class="btn">
+      <div class="cart shadow">
+       <img src="{{product.product_img.url}}" alt="" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small>
+
+    <div class="cart-footer">
+     <button class="btn btn-sm btn-primary" style="margin-left: 6px;"><i class="fa fa-shopping-cart"></i> </button>
+     <button class="btn btn-sm btn-danger"><i class="fa fa-heart"></i> </button>&nbsp&nbsp&nbsp&nbsp&nbsp
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     <span class="float-right">
+      4.3/5
+      <i class="fa fa-star text-warning"></i>
+     </span>  </a></div></div>
+    </div>
+   {% endfor %}
+   </div>
+    </div>
+ </div>
+</div>
+</div>
+
+{% endblock main-content %}

@@ -1,0 +1,14 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Add Product{% endblock title %}
+<body>
+{% block main-content %}
+<form method="post" class="jumbotron" enctype="multipart/form-data">
+  <h1>Add Product</h1>
+  {% csrf_token %}
+  {{form.as_p }}
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock main-content %}
+</body>
+

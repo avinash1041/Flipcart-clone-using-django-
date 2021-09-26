@@ -1,0 +1,49 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Mobile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <div class="list-group">
+     <a href="{% url 'bottomwear' %}" class="list-group-item list-group-item-action" area-current="true"><strong>All Bottom Wear</strong></a>
+     <a href="{% url 'bottomwearjeans' 'Fabindia' %}" class="list-group-item list-group-item-action" area-current="true">Fabindia</a>
+     <a href="{% url 'bottomwearjeans' 'Chumbak' %}" class="list-group-item list-group-item-action" area-current="true">Chumbak</a>
+     <a href="{% url 'bottomwearjeans' 'Shatranj' %}" class="list-group-item list-group-item-action" area-current="true">Shatranj</a>
+     <a href="{% url 'bottomwearjeans' 'Morpankh' %}" class="list-group-item list-group-item-action" area-current="true">Morpankh</a>
+     <a href="{% url 'bottomwearjeans' 'Rajvila' %}" class="list-group-item list-group-item-action" area-current="true">Rajvila</a>
+     <a href="{% url 'bottomwearjeans' 'Sttoffa' %}" class="list-group-item list-group-item-action" area-current="true">Sttoffa</a>
+     <a href="{% url 'bottomwearjeans' 'Aglobi' %}" class="list-group-item list-group-item-action" area-current="true">Aglobi</a>
+     <a href="{% url 'bottomwearjeans' 'Florence' %}" class="list-group-item list-group-item-action" area-current="true">Florence</a>
+     <a href="{% url 'bottomwearjeans' 'Aurelia' %}" class="list-group-item list-group-item-action" area-current="true">Aurelia</a>
+     <a href="{% url 'bottomwearjeans' 'Indigo' %}" class="list-group-item list-group-item-action" area-current="true">Indigo</a>
+  </div>
+   <hr>
+    <div class="row">
+  <div class="col-sm-12">
+       <div class="list-group">
+     <a  class="list-group-item list-group-item-action" area-current="true"><strong>Choose Price</strong></a>
+      <a href="{% url 'bottomwearjeans' 'below' %}" class="list-group-item list-group-item-action" area-current="true">Below 1000rs</a>
+       <a href="{% url 'bottomwearjeans' 'above' %}" class="list-group-item list-group-item-action" area-current="true">Above 1000rs</a>
+        </div>
+   </div>
+     </div>
+  </div>
+  <div class="col-sm-8">
+   <div class="row">
+   {% for product in bottom %}
+    <div class="col-sm-4 text-center mb-4">
+     <a href="{% url 'productdetail' product.id %}" class="btn">
+      <div class="item">
+       <img src="{{product.product_img.url}}" alt="" height="300" class="">
+       <div class="fw-bold">{{product.title}}</div>
+       <div class="fw-bold">Rs. {{product.discout_price}}</div>
+       <small class="fw-light text-decoration-line-through">Rs. {{product.price}}</small></div>
+     </a>
+  </div>
+   {% endfor %}
+   </div>
+ </div>
+</div>
+</div>
+{% endblock main-content %}

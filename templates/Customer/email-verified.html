@@ -1,0 +1,22 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Home page{% endblock title %}
+{% block main-content %}
+
+
+{% if messages %}
+{% for message in messages %}
+    <div class="container mt-3 message alert alert-{{message.tags}} text-center">{{message}}</div>
+{% endfor %}
+{% endif %}
+
+<div class="mt-5 otp-email-form text-center pb-3 shadow">
+    <h5 class="p-3">An OTP has been send to your registered Email Address</h5>
+    <form method="post" class="p-4">
+        {% csrf_token %}
+        <input type="text" name="otp" placeholder="Paste on OTP here" required>
+        <button class="btn" required>Submit</button>
+
+    </form>
+</div>
+{% endblock main-content %}

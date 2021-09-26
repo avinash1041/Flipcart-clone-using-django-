@@ -1,0 +1,54 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Home page{% endblock title %}
+<body>
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-6 text-center align-self-center">
+   <img src="{{product.product_img.url}}" alt="" class="img-fluid img-thumbnail">
+  </div>
+  <div class="col-sm-5 offset-sm-1">
+   <h2>Product Title: {{product.title}}</h2>
+   <hr>
+   <p><b>Product Description</b> : {{product.description}} </p> <br>
+   <h4>Rs. {{product.discout_price}} <small class="fw-light text-decoration-line-through">Rs.{{product.price}}</small></h4> <br>
+
+    {% if request.user.is_authenticated %}
+    {% if item_in_cart %}
+      <a href="{% url 'cart' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Go to Carts</a>
+      {% else %}
+    <form action="/add-to-cart" class="d-inline">
+        <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+        <button type="submit" class="btn btn-dark shadow px-5 py-2">Add to Cart</button>
+    </form>
+    {% endif %}
+       {% endif %}
+
+      {% if not request.user.is_authenticated %}
+           <form action="/add-to-cart" class="d-inline">
+            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+            <button type="submit" class="btn btn-dark shadow px-5 py-2">Add to Cart</button>
+             </form>
+
+      {% endif %}
+
+<a href="{% url 'checkout' %}" class="btn btn-success shadow px-5 py-2 ms-4">Buy Now</a>
+
+   <h5 class="mt-5">Available Offers</h5>
+   <ul>
+    <li><b>Combo Offer</b> Buy 3 items save 5%; Buy 4 save 7%; Buy 5+ save 10% </span><a target="_blank"  href="#" style="text-decoration: None;"> See all products<span class="fGhUR2">  T&amp;C</span></a></li>
+    <li><b>Bank Offer</b> 5% Unlimited Cashback on Flipkart Axis Bank Credit Card </span><a target="_blank" href="#" style="text-decoration: None;"><span class="fGhUR2">  T&amp;C</span></a></li>
+    <li><b>Bank Offer</b> ₹20 Off on first prepaid transaction using UPI payments, minimum order value ₹750/- </span><a target="_blank"  href="#" style="text-decoration: None;"> T&amp;C</span></a></li>
+    <li><b>Bank Offer</b> ₹20 Off on first prepaid transaction using RuPay debit card, minimum order value ₹750/-</span><a target="_blank"  href="#" style="text-decoration: None;"> T&amp;C</span></a></li>
+   </ul>
+
+  </div>
+ </div>
+</div>
+
+
+
+{% endblock main-content %}
+</body>
+</html>

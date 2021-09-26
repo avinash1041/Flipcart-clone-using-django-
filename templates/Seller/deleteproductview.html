@@ -1,0 +1,23 @@
+{% extends 'Seller/base.html' %}
+{% load static %}
+{% block title %}Delete Product{% endblock title %}
+<body>
+{% block main-content %}
+<br>
+<img src="{{demo.product_img.url}}" height="300"></p>
+<h3>&nbsp;&nbsp;Are you sure to delete this data <a style="color:red; font-family:Serif;">{{demo.title}}</a> from category is
+<a style="color:red; font-family:Serif;">{{demo.category}}</a>?? </h3>
+<div>
+    <span>
+        <form method="post">
+            {% csrf_token %}
+            <a href="{% url 'dltbasics' demo.id %}"><button class="btn btn-danger" style="margin-left: 18px;">Delete</button> </a>
+        </form>
+    </span>
+    <span>
+        <a href="{% url 'home1' %}"><button class="btn btn-success" style="margin-left: 98px;
+    margin-top: -64px;">Cancel</button> </a>
+    </span>
+</div>
+{% endblock main-content %}
+</body>

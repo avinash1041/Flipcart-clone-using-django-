@@ -1,0 +1,18 @@
+{% extends 'Seller/base.html' %}
+{% load static %}
+{% block title %}Delete Product{% endblock title %}
+<body>
+{% block main-content %}
+    <form method="post" class="jumbotron" enctype="multipart/form-data" style="width: 500px; margin-left: 30%; margin-top: 30px;">
+        <h2 >Update Product</h2>
+        {% csrf_token %}
+                       {% for fm in form %}
+                <div class="form-group mb-3">
+                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                </div>
+                {% endfor %}
+              <a href="#">
+        <input style="margin-left: 220px;" type="submit" value="Update" class="btn btn-success">
+        </a>
+    </form>
+{% endblock main-content %}

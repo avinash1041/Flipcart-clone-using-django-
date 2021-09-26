@@ -1,0 +1,38 @@
+{% extends 'Seller/base.html' %}
+{% load static %}
+{% block title %}Address{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome  <span class="text-capitalize"> {{request.user}}</span></h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile1' %}" class="btn">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address1' %}" class="btn {{active}}">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+   <div class="row">
+    {% for addr in address %}
+    <div class="col-sm-6">
+     <div class="card">
+      <div class="card-body">
+       <h3>Address {{forloop.counter}}</h3><hr>
+       <p>First Name: <strong class="text-capitalize">{{addr.first_name}}</strong> </p>
+       <p>Last Name: <strong class="text-capitalize">{{addr.last_name}}</strong> </p>
+       <p>Product Category:  <strong>{{addr.product_category}}</strong> </p>
+       <p>Country: <strong>{{addr.country}}</strong> </p>
+       <p>State: <strong>{{addr.state}}</strong></p>
+       <p>City: <strong>{{addr.city}}</strong></p>
+       <p>Bank Name: <strong>{{addr.bank_name}}</strong></p>
+       <p>Account Number: <strong>{{addr.account_no}}</strong></p>
+       <p>GST No.: <strong>{{addr.gst_no}}</strong></p>
+      </div>
+     </div>
+    </div>
+   {% endfor %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

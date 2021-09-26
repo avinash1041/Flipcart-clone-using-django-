@@ -1,0 +1,17 @@
+{% extends 'Seller/base.html' %}
+{% load static %}
+{% block title %}Seller data{% endblock title %}
+{% block main-content %}
+
+
+{% for p in product %}
+<h3>{{p.title}}</h3>
+<h3>{{p.title}}</h3>
+
+{% endfor %}
+ {% for addr in address %}
+<h4>Hi Seller {{request.user}}
+    your product category is : {{addr.product_category}}</h4>
+{% endfor %}
+
+{% endblock main-content %}

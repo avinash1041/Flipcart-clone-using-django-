@@ -1,0 +1,199 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Home page{% endblock title %}
+
+{% block banner_slider %}
+<body>
+ <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'Customer/banner/111.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Customer/banner/222.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Customer/banner/333.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'Customer/banner/444.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+
+{% endblock banner_slider %}
+
+
+{% block main-content %}
+<div class="m-3">
+
+    <a href="/topwear/" class="text-bold" style="text-decoration: none;"><h2>Show all </h2></a>
+
+    <div class="owl-carousel" id="slider1">
+    {% for prod in topwear %}
+      <a href="{% url 'productdetail' prod.id %}" class="btn">
+        <div class="item">  <img src="{{prod.product_img.url}}" alt="" height="250px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs.{{prod.discout_price}}</span>
+        </div>
+      </a>
+     {% endfor %}
+</div>
+</div>
+
+
+<div class="m-3">
+    <h2>Trending Bottom <span>Wear Deals</span></h2>
+
+    <div class="owl-carousel" id="slider2">
+        {% for prod in bottomwear %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="200px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs.{{prod.discout_price}}</span>
+            </div>
+        </a>
+     {% endfor %}
+    </div>
+</div>
+
+    <div class="m-3">
+    <h2>See all <strong>Mobile</strong></h2>
+        <hr>
+    <div class="owl-carousel" id="slider3">
+        {% for prod in Mobile %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="250px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs.{{prod.discout_price}}</span></div>
+        </a>
+     {% endfor %}
+    </div>
+</div>
+  <div class="carousel-inner">
+    <div class="mySlides">
+      <img src="{% static 'Customer/midle img/333.jpg' %}" height="200" class="d-block w-100" alt="...">
+    </div>
+    <div class="mySlides">
+      <img src="{% static 'Customer/midle img/22222222.jpg' %}"  height="200"  class="d-block w-100" alt="...">
+    </div>
+    <div class="mySlides">
+      <img src="{% static 'Customer/midle img/2222.jpg' %}"  height="200"  class="d-block w-100" alt="...">
+    </div>
+    <div class="mySlides">
+      <img src="{% static 'Customer/midle img/77.jpg' %}"  height="200"  class="d-block w-100" alt="...">
+    </div>
+
+</div>
+
+
+    <div class="m-3">
+    <h2>Top Class Shoes</h2>
+            <div class="owl-carousel" id="slider4">
+        {% for prod in Shoesdata %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="200px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs.{{prod.discout_price}}</span><br>
+
+            </span>
+            </div>
+        </a>
+     {% endfor %}
+    </div>
+        </div>
+
+    <div class="m-3">
+    <h2>Trending Python Books</h2>
+        <hr>
+        <div class="owl-carousel" id="slider5">
+        {% for prod in Books %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="200px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs.{{prod.discout_price}}</span></div>
+        </a>
+     {% endfor %}
+    </div>
+ </div>
+
+    <div class="container col-md-12">
+  <div class="row bg-primary text-center p-5 text-white border-bottom shadow">
+    <h1>SALE IS 15 MAY TO 30 MAY HARRY UP..!!!!</h1>
+    <span>50% Instant Discount on State Bank Credit and Debit Card</span>
+    <small class="fw-lighter">Term and Condition Applied (For details visit Bank's official Website)</small>
+  </div>
+</div>
+
+
+    <div class="m-3">
+        <h2>Trending Home Deals</h2>
+
+        <div class="owl-carousel" id="slider6">
+        {% for prod in home %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="200px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs. {{prod.discout_price}}</span></div>
+        </a>
+     {% endfor %}
+    </div>
+   </div>
+         <div class="m-3">
+        <h2>Trending Home Deals</h2>
+
+        <div class="owl-carousel" id="slider7">
+        {% for prod in Musical %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="200px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs. {{prod.discout_price}}</span></div>
+        </a>
+     {% endfor %}
+    </div>
+   </div>
+
+   <div class="m-3">
+        <h2>superb laptop</h2>
+
+        <div class="owl-carousel" id="slider8">
+        {% for prod in laptop %}
+        <a href="{% url 'productdetail' prod.id %}" class="btn">
+            <div class="item"><img src="{{prod.product_img.url}}" alt="" height="200px"><span class="fw-bold">{{prod.title}}</span>
+                <br><span class="fs-5">Rs. {{prod.discout_price}}</span></div>
+        </a>
+     {% endfor %}
+    </div>
+   </div>
+
+
+
+
+
+</div>
+ </div>
+
+
+ <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+
+
+{% endblock main-content %}
+
+</body>

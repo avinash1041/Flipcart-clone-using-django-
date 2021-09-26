@@ -1,0 +1,31 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Payment success{% endblock title %}
+
+{% block livesale %}
+
+   <style>
+      .center {
+      position: absolute;
+      text-align: center;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      }
+   </style>
+
+{% endblock livesale %}
+
+{% block main-content %}
+   <div class="center">
+      <h3>
+         Thanks, You are aweseome!<i class="fas fa-check-circle"></i>
+      </h3>
+      <h5>
+         <a href="{% url 'orders' %}">
+        See your orders
+         </a>
+      </h5>
+   </div>
+
+{% endblock main-content %}

@@ -1,0 +1,55 @@
+{% extends 'Customer/base.html' %}
+{% load static %}
+{% block title %}Top wear product{% endblock title %}
+{% block main-content %}
+<head>
+    <style>
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<div class="center">
+<form class="text-center border border-light p-5" action="success" method="POST">
+
+{% csrf_token %}
+
+    <p class="h3 mb-3">
+    <i class="fas fa-coffee"></i> BUY ME A COFFEE!!
+    </p>
+
+    <p class="mb-3">
+    Help us create more videos by donating 500 INR
+    </p>
+
+<input type="name" name="name" id="name" required class="form-control mb-4" placeholder="Name">
+    <br>
+</form>
+ {% if payment %}
+<form action="/success" method="POST">
+    {% csrf_token %}
+<script>
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_AeJ4sJjY6CejF5"
+    data-amount="{{amount}}"
+    data-currency="INR"
+    data-order_id="{{payment.id}}"
+    data-buttontext="Pay with Razorpay"
+    data-name="Ecommerse web application"
+    data-description="A Wild Sheep Chase is the third novel by Japanese author Haruki Murakami"
+    data-image="https://example.com/your_logo.jpg"
+    data-prefill.name="Gaurav Kumar"
+    data-prefill.email="gaurav.kumar@example.com"
+    data-theme.color="#F37254"
+</script>
+<input type="hidden" custom="Hidden Element" name="hidden">
+</form>
+
+{% endif %}
+
+
+{% endblock main-content %}
