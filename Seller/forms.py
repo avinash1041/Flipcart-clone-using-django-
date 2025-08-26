@@ -1,5 +1,7 @@
 from django.contrib.auth import password_validation
-from importlib._common import _
+# from importlib._common import _
+from django.utils.translation import gettext_lazy as _
+
 
 from django import forms
 from django.utils.translation import gettext,gettext_lazy as _
